@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detector</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 40px;
+        }
+
+        p {
+            color: #555;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px 40px;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .results {
+            margin-top: 30px;
+            background-color: #e6f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #91d5ff;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .results p {
+            margin: 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <h1>📰 Fake News Detector</h1>
+    <p>Project by apurva srivastava.. to determine if a news text is real or fake. Try it out below!</p>
+
+    <form name="input" action="/detect_html" method="post">
+        <label for="text">Text to detect:</label>
+        <input type="text" id="text" name="text" placeholder="Enter news headline or article text..." required>
+        <input type="submit" value="Detect Fake News">
+    </form>
+
+    {% if result %}
+        <div class="results">
+            <p><strong>Result:</strong> {{ result }}</p>
+            <p><strong>Logits:</strong> {{ logits }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
